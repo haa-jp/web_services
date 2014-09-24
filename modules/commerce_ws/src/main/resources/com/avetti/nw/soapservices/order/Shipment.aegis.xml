@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="Shipment">
+        <property name="carrier" mappedName=":Carrier" />
+        <property name="method" mappedName=":Method" />
+        <property name="shipDate" mappedName=":ShipDate" />
+        <property name="weight" mappedName=":Weight" />
+        <property name="trackingNumber" mappedName=":TrackingNumber" />
+    </mapping>
+</mappings>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings >
+    <mapping>
+        <method name="GetARStatement">
+            <return-type  mappedName="CustomerStatement" componentType="com.avetti.nw.soapservices.customer.CustomerStatement"/>
+            <parameter index="0" mappedName="Customer" />
+        </method>
+        <method name="GetCustomerOrders">
+            <return-type  mappedName="Orders" componentType="com.avetti.nw.soapservices.customer.CustomerOrdersResponse"/>
+            <parameter index="0" mappedName="Customer" />
+        </method>
+        <method name="GetARSummary">
+            <return-type  mappedName="ARSummary" componentType="com.avetti.nw.soapservices.customer.ARSummary"/>
+            <parameter index="0" mappedName="Customer" />
+        </method>
+    </mapping>
+</mappings>

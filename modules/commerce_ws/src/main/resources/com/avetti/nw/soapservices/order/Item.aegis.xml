@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="Item">
+        <property name="itemNumber" mappedName=":ItemNumber" />
+        <property name="description1" mappedName=":Description1" />
+        <property name="description2" mappedName=":Description2" />
+        <property name="orderQty" mappedName=":OrderQty" />
+        <property name="shipQty" mappedName=":ShipQty" />
+        <property name="bOQty" mappedName=":BOQty" />
+        <property name="uOM" mappedName=":UOM" />
+        <property name="sellPrice" mappedName=":SellPrice" />
+        <property name="total" mappedName=":Total" />
+        <property name="lineType" mappedName=":LineType" />
+    </mapping>
+</mappings>

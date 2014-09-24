@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings >
+	<mapping>
+		<method name="GetCustomerPaidInvoices">
+			<return-type  mappedName="Invoices" componentType="com.avetti.nw.soapservices.invoices.PaidInvoicesResponse"/>
+			<parameter index="0" mappedName="Input" />
+		</method>
+		<method name="GetCustomerPaidInvoice">
+            <return-type  mappedName="Invoice" componentType="com.avetti.nw.soapservices.invoices.PaidInvoiceResponse"/>
+            <parameter index="0" mappedName="Input" />
+        </method>
+	</mapping>
+</mappings>

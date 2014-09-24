@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="ws:ItemInventoryResponse">
+        <property name="inventoryCount" mappedName=":ItemCount" minOccurs="1" maxOccurs="1" nillable="false"/>
+        <property name="inventories" mappedName=":Items" componentType="com.avetti.commerce.module.inventorybaws.service.ItemInventory"/>
+    </mapping>
+</mappings>

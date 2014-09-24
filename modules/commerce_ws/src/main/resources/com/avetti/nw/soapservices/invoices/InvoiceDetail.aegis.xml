@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="InvoiceDetail">
+        <property name="transDate" mappedName=":TransDate" />
+        <property name="transType" mappedName=":TransType" />
+        <property name="transAmount" mappedName=":TransAmount" />
+        <property name="paymentAmount" mappedName=":PaymentAmount" />       
+        <property name="cashDiscountAmount" mappedName=":CashDiscountAmount" />
+        <property name="checkNumber" mappedName=":CheckNumber" />
+        <property name="adjustmentNumber" mappedName=":AdjustmentNumber" />
+        <property name="orderNumber" mappedName=":OrderNumber" />
+        <property name="generation" mappedName=":Generation" />
+        <property name="poNumber" mappedName=":PoNumber" />
+    </mapping>
+</mappings>

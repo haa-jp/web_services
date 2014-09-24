@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings >
+	<mapping>
+		<method name="GetCustomerOpenInvoices">
+			<return-type  mappedName="Invoices" componentType="com.avetti.nw.soapservices.invoices.OpenInvoicesResponse"/>
+			<parameter index="0" mappedName="Input" />
+		</method>
+		<method name="GetCustomerOpenInvoice">
+            <return-type  mappedName="Invoice" componentType="com.avetti.nw.soapservices.invoices.OpenInvoiceResponse"/>
+            <parameter index="0" mappedName="Input" />
+        </method>
+	</mapping>
+</mappings>

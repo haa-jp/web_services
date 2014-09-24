@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws">
+    <mapping name="ws:PaidInvoicesResponse" >
+        <property name="invoiceCount" mappedName=":InvoiceCount" minOccurs="1" maxOccurs="1" nillable="false"/>
+        <property name="invoices" mappedName=":Invoices" componentType="com.avetti.nw.soapservices.invoices.Invoice"/>
+    </mapping>
+</mappings>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="InvoiceHeader">
+        <property name="invoiceNumber" mappedName=":InvoiceNumber" />
+        <property name="invoiceDate" mappedName=":InvoiceDate" />
+        <property name="ageDate" mappedName=":AgeDate" />       
+        <property name="invoiceAmount" mappedName=":InvoiceAmount" />
+        <property name="invoiceBalance" mappedName=":InvoiceBalance" />
+        <property name="histSequence" mappedName=":HistSequence" />
+    </mapping>
+</mappings>

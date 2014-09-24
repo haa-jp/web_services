@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="ws:OrderOutput">
+        <property name="header" mappedName=":Header" />
+        <property name="detail" mappedName=":Detail" componentType="com.avetti.nw.soapservices.order.Item"/>
+        <property name="shipping" mappedName=":Shipping" componentType="com.avetti.nw.soapservices.order.Shipment"/>
+    </mapping>
+</mappings>

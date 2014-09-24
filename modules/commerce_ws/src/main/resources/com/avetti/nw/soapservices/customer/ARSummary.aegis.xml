@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="ws:ARSummary">
+        <property name="customerName" mappedName=":CustomerName" />
+        <property name="address1" mappedName=":Address1" />
+        <property name="address2" mappedName=":Address2" />
+        <property name="address3" mappedName=":Address3" />
+        <property name="address4" mappedName=":Address4" />
+        <property name="city" mappedName=":City" />
+        <property name="state" mappedName=":State" />
+        <property name="zipCode" mappedName=":ZipCode" />
+        <property name="openOrderAmount" mappedName=":OpenOrderAmount" />
+        <property name="billingPeriodAmt" mappedName=":BillingPeriodAmt" />
+        <property name="agePeriod1Amt" mappedName=":AgePeriod1Amt" />
+        <property name="agePeriod2Amt" mappedName=":AgePeriod2Amt" />
+        <property name="agePeriod3Amt" mappedName=":AgePeriod3Amt" />
+        <property name="agePeriod4Amt" mappedName=":AgePeriod4Amt" />
+        <property name="amountDue" mappedName=":AmountDue" />
+        <property name="futureAmount" mappedName=":FutureAmount" />
+        <property name="salesMonthToDate" mappedName=":SalesMonthToDate" />
+        <property name="salesYearToDate" mappedName=":SalesYearToDate" />
+        <property name="salesLastYear" mappedName=":SalesLastYear" />
+        <property name="lastPaymentDate" mappedName=":LastPaymentDate" />
+        <property name="dateOfFirstSale" mappedName=":DateOfFirstSale" />
+        <property name="termsDescription" mappedName=":TermsDescription" />
+        <property name="ageDaysPeriod1" mappedName=":AgeDaysPeriod1" />
+        <property name="ageDaysPeriod2" mappedName=":AgeDaysPeriod2" />
+        <property name="ageDaysPeriod3" mappedName=":AgeDaysPeriod3" />
+        <property name="ageDaysPeriod4" mappedName=":AgeDaysPeriod4" />
+    </mapping>
+</mappings>

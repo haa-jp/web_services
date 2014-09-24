@@ -1,0 +1,187 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.avetti</groupId>
+	<artifactId>customer-nw</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Customer NW specific classes</name>
+	<url>http://www.avetti.com</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	
+	<properties> 
+        <commerce.webxml.customservletmapping>
+        <![CDATA[
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/openinvoices.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/openinvoice.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/paidinvoices.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/paidinvoice.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/accountsummary.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/nwrevieworders.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/nwrevieworder.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/nwprintorder.html</url-pattern>
+            </servlet-mapping>
+            <servlet-mapping>
+                <servlet-name>springapp</servlet-name>
+                <url-pattern>/nwemailorder.html</url-pattern>
+            </servlet-mapping>
+        ]]>
+        </commerce.webxml.customservletmapping>
+   </properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.xfire</groupId>
+			<artifactId>xfire-jaxb2</artifactId>
+			<version>1.2.6</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.xfire
+                    </groupId>
+					<artifactId>xfire-annotations
+                    </artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.ws.commons</groupId>
+					<artifactId>XmlSchema</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.xfire</groupId>
+			<artifactId>xfire-spring</artifactId>
+			<version>1.2.6</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.xfire</groupId>
+					<artifactId>xfire-annotations</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-hibernate3</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+		        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+	</dependencies>
+</project>

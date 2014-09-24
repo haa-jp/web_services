@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings >
+    <mapping>
+        <method name="GetItemInventoryArray">
+            <return-type mappedName="Results" componentType="com.avetti.commerce.module.inventorybaws.service.ItemInventoryResponse"/>
+            <parameter index="0" mappedName="Item" componentType="com.avetti.commerce.module.inventorybaws.service.ItemInput"/>
+        </method>
+    </mapping>
+</mappings>

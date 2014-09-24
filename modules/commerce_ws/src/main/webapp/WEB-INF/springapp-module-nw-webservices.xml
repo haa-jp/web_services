@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="customerNumberResolver" class="com.avetti.nw.customer.CustomerNumberResolver">
+		<constructor-arg index="0" ref="customerBOCommerce" />
+		<property name="themeNumbers">
+			<props>
+                 <prop key="1708">8667573780</prop>		<!-- snow -->
+                 <prop key="1761">4071471</prop>		<!-- demo -->
+                 <prop key="969">4341111</prop>			<!-- N/A -->
+                 <prop key="1825">5</prop>				<!-- MASTER SITE -->
+                 <prop key="1861">4341111</prop>		<!-- b2c rv demo -->
+                 <prop key="1862">20000</prop>			<!-- b2c marine demo -->
+                 <prop key="1854">8774071457</prop>		<!-- boliy -->
+                 <prop key="1867">56401</prop>			<!-- b2c Lewies RV -->
+                 <prop key="1866">55362</prop>			<!-- b2c Monticello RV -->
+                 <prop key="2051">50125</prop>			<!-- Herold Trailer Sales -->
+                 <prop key="2052">58103</prop>			<!-- Outlet Recreation -->
+                 <prop key="1970">4071457</prop>		<!-- Extreme Max Promotions -->
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="webservicePageMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="velocityTemplateInterceptor" />
+				<ref bean="storeCurrencyInterceptor" />
+				<ref bean="autoLoginInterceptor" />
+				<ref bean="quickAuthenticationInterceptor" />
+				<ref bean="localeChangeInterceptor" />
+				<ref bean="skinInterceptor" />
+				<ref bean="storeDefaultLanguageInterceptor" />
+				<ref bean="xssModelInterceptor" />
+				<ref bean="shopperSplitTestCaseInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/openinvoices.html">showOpenInvoicesController</prop>
+				<prop key="/openinvoice.html">showOpenInvoiceController</prop>
+				<prop key="/paidinvoices.html">showPaidInvoicesController</prop>
+				<prop key="/paidinvoice.html">showPaidInvoiceController</prop>
+				<prop key="/accountsummary.html">showCustomerController</prop>
+				<prop key="/nwrevieworders.html">showCustomerOrdersController</prop>
+				<prop key="/nwrevieworder.html">showCustomerOrderController</prop>
+				<prop key="/nwprintorder.html">showPrintOrderController</prop>
+				<prop key="/nwemailorder.html">emailCustomerOrderController</prop>
+				<prop key="/404.htm">notFoundErrorPageControllerNW</prop>
+<!-- 				<prop key="/lostsale.ajx">lostSaleService</prop> -->
+				
+<!--  			<prop key="/nwlogin.admin">NWloginadminController</prop> -->
+				
+			</props>
+		</property>
+	</bean>
+<!-- 	</bean>
+	
+		<bean id="nwLoginadminController"
+		class="com.avetti.simplemerce.adminpages.controllers.LoginAdminController">
+		<property name="formView">
+			<value>nwloginadmin</value>
+		</property>
+		<property name="successView">
+			<value>nwloginadmin</value>
+		</property>
+		<property name="commandName">
+			<value>passwordupdateDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.simplemerce.adminpages.datatransfer.PasswordupdateDTO</value>
+		</property>
+		<property name="vendorBA">
+			<ref bean="vendorBA" />
+		</property>
+		<property name="languagesBO">
+			<ref bean="languagesBOCommerce" />
+		</property>
+		<property name="adminipsBO">
+			<ref bean="adminipsBOCommerce" />
+		</property>
+	</bean>
+-->
+	<bean id="AROpenInvoiceWebService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.nw.soapservices.invoices.AROpenInvoiceService" />
+		<property name="wsdlDocumentUrl" value="${ar_open_invoice.wsdl}" />
+	</bean>
+
+	<bean id="ARPaidInvoiceWebService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.nw.soapservices.invoices.ARPaidInvoiceService" />
+		<property name="wsdlDocumentUrl" value="${ar_paid_invoice.wsdl}" />
+	</bean>
+
+	<bean id="ARCustomerWebService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.nw.soapservices.customer.ARCustomerService" />
+		<property name="wsdlDocumentUrl" value="${ar_customer.wsdl}" />
+	</bean>
+
+	<bean id="AROrderWebService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.nw.soapservices.order.AROrderService" />
+		<property name="wsdlDocumentUrl" value="${ar_order.wsdl}" />
+	</bean>
+	<bean id="ARItemWebService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass" value="com.avetti.nw.soapservices.item.ItemService" />
+		<property name="wsdlDocumentUrl" value="${ar_item.wsdl}" />
+	</bean>
+<!-- 	<bean id="itemLostSaleService" -->
+<!-- 		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean"> -->
+<!-- 		<property name="serviceClass" value="com.avetti.nw.soapservices.item.ItemLostSaleService" /> -->
+<!-- 		<property name="wsdlDocumentUrl" value="${ar_item_lost_sale.wsdl}" /> -->
+<!-- 	</bean> -->
+
+	<bean id="showOpenInvoicesController"
+		class="com.avetti.nw.store.invoices.controllers.ShowOpenInvoicesController">
+
+		<property name="service" ref="AROpenInvoiceWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+
+		<property name="formView">
+			<value>openinvoices</value>
+		</property>
+		<property name="successView">
+			<value>openinvoices</value>
+		</property>
+
+		<property name="commandName">
+			<value>openInvoicesDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.invoices.controllers.OpenInvoicesDTO
+			</value>
+		</property>
+		<property name="referenceDataComponents">
+
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+
+
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+	</bean>
+
+	<bean id="showOpenInvoiceController"
+		class="com.avetti.nw.store.invoices.controllers.ShowOpenInvoiceController">
+
+		<property name="service" ref="AROpenInvoiceWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+
+		<property name="formView">
+			<value>openinvoice</value>
+		</property>
+		<property name="successView">
+			<value>openinvoice</value>
+		</property>
+
+		<property name="commandName">
+			<value>openInvoiceDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.invoices.controllers.OpenInvoiceDTO
+			</value>
+		</property>
+		<property name="referenceDataComponents">
+
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+
+		</property>
+
+
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+	</bean>
+
+
+	<bean id="showPaidInvoicesController"
+		class="com.avetti.nw.store.invoices.controllers.ShowPaidInvoicesController">
+		<property name="service" ref="ARPaidInvoiceWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+		<property name="formView">
+			<value>paidinvoices</value>
+		</property>
+		<property name="successView">
+			<value>paidinvoices</value>
+		</property>
+		<property name="commandName">
+			<value>paidInvoicesDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.invoices.controllers.PaidInvoicesDTO
+			</value>
+		</property>
+		<property name="referenceDataComponents">
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+	</bean>
+
+	<bean id="showPaidInvoiceController"
+		class="com.avetti.nw.store.invoices.controllers.ShowPaidInvoiceController">
+		<property name="service" ref="ARPaidInvoiceWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+		<property name="formView">
+			<value>paidinvoice</value>
+		</property>
+		<property name="successView">
+			<value>paidinvoice</value>
+		</property>
+		<property name="commandName">
+			<value>paidInvoiceDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.invoices.controllers.PaidInvoiceDTO
+			</value>
+		</property>
+		<property name="referenceDataComponents">
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+	</bean>
+
+	<bean id="showCustomerController"
+		class="com.avetti.nw.store.customers.controllers.ShowCustomerController">
+		<property name="service" ref="ARCustomerWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+		<property name="formView">
+			<value>accountsummary</value>
+		</property>
+		<property name="successView">
+			<value>accountsummary</value>
+		</property>
+		<property name="commandName">
+			<value>customerDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.customers.controllers.CustomerDTO</value>
+		</property>
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+		<property name="referenceDataComponents">
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+	</bean>
+	<bean id="showCustomerOrdersController"
+		class="com.avetti.nw.store.customers.controllers.ShowCustomerOrdersController">
+		<property name="service" ref="ARCustomerWebService" />
+		<property name="orderService" ref="AROrderWebService" />
+		<property name="customerNumberResolver" ref="customerNumberResolver" />
+		<property name="formView">
+			<value>nwrevieworders</value>
+		</property>
+		<property name="successView">
+			<value>nwrevieworders</value>
+		</property>
+		<property name="commandName">
+			<value>customerOrdersDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.customers.controllers.CustomerOrdersDTO
+			</value>
+		</property>
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+		<property name="referenceDataComponents">
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="showCustomerOrderController"
+		class="com.avetti.nw.store.order.controllers.ShowCustomerOrderController">
+		<property name="service" ref="AROrderWebService" />
+
+		<property name="formView">
+			<value>nwrevieworder</value>
+		</property>
+		<property name="successView">
+			<value>nwrevieworder</value>
+		</property>
+
+		<property name="commandName">
+			<value>customerOrderDTO</value>
+		</property>
+		<property name="commandClass">
+			<value>com.avetti.nw.store.order.controllers.CustomerOrderDTO</value>
+		</property>
+		<property name="referenceDataComponents">
+			<list>
+				<ref bean="mlComponentBA" />
+				<ref bean="vCatsComponentBA" />
+				<ref bean="pageComponentProcessor" />
+				<ref bean="storeCurrencyComponent" />
+				<ref bean="welcomeMatBA" />
+				<ref bean="miniBasketDataBA" />
+				<ref bean="mlPageTileComponentBA" />
+				<ref bean="allowanceCustomerInfoBA" />
+				<ref bean="requestURLBA" />
+				<ref bean="prepareGiftCertAvailableAmountComponentBA" />
+			</list>
+		</property>
+		<property name="appSettingsBA">
+			<ref bean="appSettingsBA" />
+		</property>
+		<property name="vendorSettingsBA">
+			<ref bean="vendorSettingsBA" />
+		</property>
+	</bean>
+	
+	<bean id="showPrintOrderController"
+        class="com.avetti.nw.store.order.controllers.ShowCustomerOrderController">
+        <property name="service" ref="AROrderWebService" />
+
+        <property name="formView">
+            <value>nwprintorder</value>
+        </property>
+        <property name="successView">
+            <value>nwprintorder</value>
+        </property>
+
+        <property name="commandName">
+            <value>customerOrderDTO</value>
+        </property>
+        <property name="commandClass">
+            <value>com.avetti.nw.store.order.controllers.CustomerOrderDTO</value>
+        </property>
+        <property name="referenceDataComponents">
+            <list>
+                <ref bean="mlComponentBA" />
+                <ref bean="vCatsComponentBA" />
+                <ref bean="pageComponentProcessor" />
+                <ref bean="storeCurrencyComponent" />
+                <ref bean="welcomeMatBA" />
+                <ref bean="miniBasketDataBA" />
+                <ref bean="mlPageTileComponentBA" />
+                <ref bean="allowanceCustomerInfoBA" />
+                <ref bean="requestURLBA" />
+                <ref bean="prepareGiftCertAvailableAmountComponentBA" />
+            </list>
+        </property>
+        <property name="appSettingsBA">
+            <ref bean="appSettingsBA" />
+        </property>
+        <property name="vendorSettingsBA">
+            <ref bean="vendorSettingsBA" />
+        </property>
+    </bean>
+    
+    <bean id="emailCustomerOrderController"
+        class="com.avetti.nw.store.order.controllers.EmailCustomerOrderController">
+        <property name="service" ref="AROrderWebService" />
+        <property name="emailSenderThread" ref="emailSenderThread"/>
+        <property name="manageCustomerBA" ref="manageCustomerBA" />
+    </bean>
+
+	<bean class="com.avetti.commerce.xfire.CustomDateTypeRegister">
+		<property name="serviceFactory" ref="xfire.serviceFactory" />
+		<property name="serviceClients">
+			<list>
+				<ref bean="AROpenInvoiceWebService" />
+				<ref bean="ARPaidInvoiceWebService" />
+				<ref bean="ARCustomerWebService" />
+				<ref bean="AROrderWebService" />
+				<ref bean="ARItemWebService" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="arCustomerComponentBA"
+		class="com.avetti.nw.common.businessaction.components.ARCustomerComponentBA">
+		<property name="priority" value="1000" />
+		<property name="custPropertyBA">
+			<ref bean="customerPropertyBA" />
+		</property>
+		<property name="service">
+			<ref bean="ARCustomerWebService"/>
+		</property>
+	</bean>
+ 
+	<bean id="storePriceBOws" class="com.avetti.nw.store.businessobjects.StorePriceBOws">
+		 <property name="pricedPageTiles">	
+		 	 <map>
+                <entry key="AdvancedSearchUsingSolr">
+                         <set>
+                           <value>i</value>
+                         </set>
+                         </entry>
+    			<entry key="childItemsDTO">
+            		<set>
+             			 <value>i</value>
+            		</set>
+    			</entry>
+    			<entry key="subChildItemsDTO">
+    				<set>
+    					<value>i</value>
+    					<value>d</value>
+    				</set>
+    			</entry>
+    			<entry key="childItemsAll">
+    				<set>
+    					<value>i</value>
+    				</set>
+    			</entry>
+    			<entry key="singleCatDTO">
+    				<set>
+    					<value>c</value>
+    				</set>
+    			</entry>
+    			<entry key="childItemsAllAvail">
+    				 <set>
+    					<value>i</value>
+    				</set>
+    			</entry>
+    			<entry key="singleItemDTO">
+    				<set>
+    					<value>i</value>
+    				</set>
+    			</entry>
+    			<entry key="accessoriesItemsDTO">
+    				<set>
+    					<value>i</value>
+    				</set>
+    			</entry>
+    			<entry key="wishListVectorDTO">
+    				<set>
+    					<value>item</value>
+    				</set>
+    			</entry>
+    		</map>
+    	</property>
+		<property name="storePriceDAO">
+			<ref bean="storePriceDAO"/>
+		</property>
+		<property name="categoryBO">
+			<ref bean="categoryBOCommerce"/>
+		</property>
+		<property name="customerNumberResolver">
+			<ref bean="customerNumberResolver"/>
+		</property>	
+		<property name="service">
+			<ref bean="ARItemWebService"/>
+		</property>
+		<property name="vendorBO">
+			<ref bean="vendorBO"/>
+		</property>
+	</bean>
+
+	<bean id="fillProductPriceBAcustom"
+		class="com.avetti.nw.store.basket.components.FillProductPriceBAcustom">
+		<property name="productBO" ref="productBOProxy" />
+		<property name="manageAnonymousCustomerBA">
+			<ref bean="manageAnonymousCustomerBA" />
+		</property>
+	</bean>
+
+	<bean id="productBOcustom" class="com.avetti.nw.store.basket.impl.ProductBOImplcustom">
+		<property name="attributesBO" ref="attributesBOCommerce" />
+		<property name="productOptionBO" ref="productOptionBO" />
+		<property name="storePrice" ref="storePriceBA" />
+		<property name="itemBO" ref="itemBOCommerce" />
+		<property name="itemskuBO">
+			<ref bean="itemskuBOCommerce" />
+		</property>
+	<property name="messageResolve"><ref bean="messageResolve"/></property>
+     <property name="itemsMlBA"><ref bean="itemsMlBA"/></property>
+     <property name="propertiesMlBA"><ref bean="propertiesMlBA"/></property>
+     <property name="attributesMlBA"><ref bean="attributesMlBA"/></property>
+     <property name="optionsMlBA"><ref bean="optionsMlBA"/></property>
+     <property name="packagePriceBO" ref="packagePriceBOCommerce"/>
+	</bean>
+	
+	<bean id="storePriceBAcustom" class="com.avetti.nw.store.businessaction.StorePriceBAcustom">
+    	 <property name="storePriceBO"><ref bean="storePriceBOproxy"/></property>
+    	 <property name="productBA"> <ref bean="productBA"/> </property>
+    </bean>
+	
+	<bean id="checkout.OrderPropertiesBACustom" parent="checkout.OrderPropertiesBA"
+		class="com.avetti.nw.store.checkout.businessaction.OrderPropertiesBACustom">
+		 	<property name="customerNumberResolver">
+		 		<ref bean="customerNumberResolver"/>
+		 	</property>
+	</bean>
+   <bean id="notFoundErrorPageControllerNW" class="com.avetti.simplemerce.controllers.NotFoundErrorPageController">
+    <property name="formView">
+
+      <value>not_found_error_page</value>
+
+    </property>
+
+    <property name="successView">
+
+      <value>not_found_error_page</value>
+
+    </property>
+	
+	<property name="commandClass">
+
+      <value>java.lang.Object</value>
+
+    </property>
+
+  </bean>
+<!--     <bean id="lostSaleService" class="com.avetti.nw.soapservices.item.LostSaleService"> -->
+<!--      <property name="itemLostSaleService"><ref bean="itemLostSaleService"/></property>   -->
+<!--   </bean> -->
+  
+</beans>

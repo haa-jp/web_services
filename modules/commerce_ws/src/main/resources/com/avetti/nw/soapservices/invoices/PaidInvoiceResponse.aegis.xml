@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws">
+    <mapping name="ws:PaidInvoiceResponse" >
+        <property name="invoiceHeader" mappedName=":InvoiceHeader" componentType="com.avetti.nw.soapservices.invoices.InvoiceHeader"/>
+        <property name="invoiceDetails" mappedName=":InvoiceDetails" componentType="com.avetti.nw.soapservices.invoices.InvoiceDetail"/>
+    </mapping>
+</mappings>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<mapping name="ws:PaidInvoicesInput">
+		<property name="company" mappedName=":Company" minOccurs="1" nillable="false"/>
+		<property name="customerNumber" mappedName=":CustomerNumber" minOccurs="1" nillable="false"/>
+		<property name="endDate" mappedName=":EndDate" />
+		<property name="invoiceNumber" mappedName=":InvoiceNumber" />
+		<property name="orderNumber" mappedName=":OrderNumber" />
+		<property name="poNumber" mappedName=":PoNumber" />
+		<property name="page" mappedName=":Page" />
+		<property name="limit" mappedName=":Limit" />
+	</mapping>
+</mappings>

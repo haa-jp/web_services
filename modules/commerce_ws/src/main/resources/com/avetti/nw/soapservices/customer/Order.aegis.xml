@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="Order">
+        <property name="orderNumber" mappedName=":OrderNumber" />
+        <property name="generation" mappedName=":Generation" />
+        <property name="poNumber" mappedName=":PoNumber" />
+        <property name="orderDate" mappedName=":OrderDate" />
+        <property name="orderValue" mappedName=":OrderValue" />
+        <property name="invoiceAmount" mappedName=":InvoiceAmount" />
+        <property name="histSequence" mappedName=":HistSequence" />
+        <property name="orderType" mappedName=":OrderType" />
+        <property name="status" mappedName=":Status" />
+        <property name="estShipDate" mappedName=":EstShipDate" />
+        <property name="shipDate" mappedName=":ShipDate" />
+        <property name="invoiceDate" mappedName=":InvoiceDate" />
+    </mapping>
+</mappings>

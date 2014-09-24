@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="Header">
+        <property name="companyNumber" mappedName=":CompanyNumber" />
+        <property name="customerNumber" mappedName=":CustomerNumber" />
+        <property name="orderNumber" mappedName=":OrderNumber" />
+        <property name="generation" mappedName=":Generation" />
+        <property name="poNumber" mappedName=":PoNumber" />
+        <property name="orderDate" mappedName=":OrderDate" />
+        <property name="orderValue" mappedName=":OrderValue" />
+        <property name="invoiceAmount" mappedName=":InvoiceAmount" />
+        <property name="histSequence" mappedName=":HistSequence" />
+        <property name="orderType" mappedName=":OrderType" />
+        <property name="status" mappedName=":Status" />
+        <property name="estShipDate" mappedName=":EstShipDate" />
+        <property name="shipDate" mappedName=":ShipDate" />
+        <property name="invoiceDate" mappedName=":InvoiceDate" />
+        <property name="invoiceNumber" mappedName=":InvoiceNumber" />
+        <property name="billToName" mappedName=":BillToName" />
+        <property name="billToLine1" mappedName=":BillToLine1" />
+        <property name="billToLine2" mappedName=":BillToLine2" />
+        <property name="billToLine3" mappedName=":BillToLine3" />
+        <property name="billToCity" mappedName=":BillToCity" />
+        <property name="billToState" mappedName=":BillToState" />
+        <property name="billToZip" mappedName=":BillToZip" />
+        <property name="billToCountry" mappedName=":BillToCountry" />
+        <property name="shipToName" mappedName=":ShipToName" />
+        <property name="shipToLine1" mappedName=":ShipToLine1" />
+        <property name="shipToLine2" mappedName=":ShipToLine2" />
+        <property name="shipToLine3" mappedName=":ShipToLine3" />
+        <property name="shipToCity" mappedName=":ShipToCity" />
+        <property name="shipToState" mappedName=":ShipToState" />
+        <property name="shipToZip" mappedName=":ShipToZip" />
+        <property name="shipToCountry" mappedName=":ShipToCountry" />
+    </mapping>
+</mappings>

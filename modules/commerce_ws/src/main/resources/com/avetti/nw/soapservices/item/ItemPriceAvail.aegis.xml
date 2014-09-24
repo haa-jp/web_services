@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:ws="http://192.168.1.1:89/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <mapping name="ws:ItemPriceAvail">
+        <property name="itemNumber" mappedName=":ItemNumber" />
+        <property name="dealerPrice" mappedName=":DealerPrice" />
+        <property name="retailPrice" mappedName=":RetailPrice" />
+        <property name="contractPrice" mappedName=":ContractPrice" />
+        <property name="available" mappedName=":Available" />
+    </mapping>
+</mappings>

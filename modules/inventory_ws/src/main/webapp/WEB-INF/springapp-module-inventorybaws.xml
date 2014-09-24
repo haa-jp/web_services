@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!-- MAPPING remove this section if your module has no new url mappings -->
+<beans>
+	<bean id="inventoryBAmoduleWebservice" class="com.avetti.commerce.module.inventorybaws.InventoryBAWS" 
+		parent="inventoryBACommerceTarget">
+		<property name="inventoryBOws">
+			<ref bean="inventoryBOmoduleWebservice" />
+		</property>
+		<property name="storeItemBO">
+			<ref bean="ncStoreItemBO" />
+		</property>
+	</bean>
+
+	<bean id="inventoryBOmoduleWebservice"
+		class="com.avetti.commerce.module.inventorybaws.inventorybows.InventoryBOImpl">
+		<property name="service">
+			<ref bean="inventoryService"/> 
+		</property>
+		<property name="itemBO" ref="itemBOCommerce"/>
+		<property name="inventoryMultiService" ref="inventoryMultiService"/>
+	</bean>
+	<bean id="inventoryMultiService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.commerce.module.inventorybaws.service.InventoryMultiService" />
+		<property name="wsdlDocumentUrl" value="${inventorybaws_multi_wsdlURL}" />
+        <property name="outHandlers">
+          <list>
+               <bean class="org.codehaus.xfire.util.dom.DOMOutHandler"/>
+               <bean class="org.codehaus.xfire.util.LoggingHandler"/>
+          </list>
+        </property>
+	</bean>
+	<bean id="inventoryService"
+		class="org.codehaus.xfire.spring.remoting.XFireClientFactoryBean">
+		<property name="serviceClass"
+			value="com.avetti.commerce.module.inventorybaws.service.InventoryService" />
+		<property name="wsdlDocumentUrl" value="${inventorybaws_wsdlURL}" />
+        <property name="outHandlers">
+          <list>
+               <bean class="org.codehaus.xfire.util.dom.DOMOutHandler"/>
+               <bean class="org.codehaus.xfire.util.LoggingHandler"/>
+          </list>
+        </property>
+	</bean>
+    <bean id="nwStoreControllerCustomData" class="com.avetti.commerce.module.inventorybaws.service.NWStoreControllerCustomDataImpl">
+        <property name="inventoryMultiService" ref="inventoryMultiService"/>
+    </bean>
+    <bean id="nwAdvancedSolrControllerCustomData" class="com.avetti.commerce.module.inventorybaws.service.NWAdvancedSolrControllerCustomDataImpl">
+        <property name="inventoryMultiService" ref="inventoryMultiService"/>
+    </bean>
+</beans>
+<!-- END MAPPING -->

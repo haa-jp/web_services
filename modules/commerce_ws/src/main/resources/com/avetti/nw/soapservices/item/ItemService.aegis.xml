@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings >
+    <mapping>
+        <method name="GetItemPriceAvail">
+            <return-type  mappedName="ItemPriceAvail" componentType="com.avetti.nw.soapservices.item.ItemPriceAvail"/>
+            <parameter index="0" mappedName="Item" />
+        </method>
+    </mapping>
+    <mapping>
+        <method name="SetItemLostSale">
+            <return-type  mappedName="ItemLostSale" componentType="com.avetti.nw.soapservices.item.ItemLostSale"/>
+            <parameter index="0" mappedName="Item" />
+        </method>
+    </mapping>
+</mappings>
